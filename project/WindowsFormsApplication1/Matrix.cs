@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
+    /// <summary>
+    /// Class Matrix has just three static matrices which are convolution masks for edge detection.
+    /// Each mask has version for x axis and z axis.
+    /// </summary>
     class Matrix
     {
     // ================== SOBEL =======================
@@ -14,9 +18,7 @@ namespace WindowsFormsApplication1
             get
             {
                 return new int[,] 
-                { { -1,  0,  1, }, 
-                  { -2,  0,  2, }, 
-                  { -1,  0,  1, }, };
+                { { -1,  0,  1, }, { -2,  0,  2, }, { -1,  0,  1, }, };
             }
         }
 
@@ -25,9 +27,7 @@ namespace WindowsFormsApplication1
             get
             {
                 return new int[,] 
-                { {  1,  2,  1, }, 
-                  {  0,  0,  0, }, 
-                  { -1, -2, -1, }, };
+                { {  1,  2,  1, }, {  0,  0,  0, }, { -1, -2, -1, }, };
             }
         }
 
@@ -38,9 +38,7 @@ namespace WindowsFormsApplication1
             get
             {
                 return new int[,] 
-                { { -1,  0,  1, }, 
-                  { -1,  0,  1, }, 
-                  { -1,  0,  1, }, };
+                { { -1,  0,  1, }, { -1,  0,  1, }, { -1,  0,  1, }, };
             }
         }
 
@@ -49,9 +47,7 @@ namespace WindowsFormsApplication1
             get
             {
                 return new int[,] 
-                { {  1,  1,  1, }, 
-                  {  0,  0,  0, }, 
-                  { -1, -1, -1, }, };
+                { {  1,  1,  1, }, {  0,  0,  0, }, { -1, -1, -1, }, };
             }
         }
 
@@ -61,9 +57,7 @@ namespace WindowsFormsApplication1
             get
             {
                 return new int[,] 
-                { {  5,  5,  5, }, 
-                  { -3,  0, -3, }, 
-                  { -3, -3, -3, }, };
+                { { 5, -3, -3, }, { 5, 0, -3, }, { 5, -3, -3, }, };
             }
         }
 
@@ -72,9 +66,8 @@ namespace WindowsFormsApplication1
             get
             {
                 return new int[,] 
-                { {  5, -3, -3, }, 
-                  {  5,  0, -3, }, 
-                  {  5, -3, -3, }, };
+                { {  5,  5,  5, }, { -3,  0, -3, }, { -3, -3, -3, }, };
+                
             }
         }
     }

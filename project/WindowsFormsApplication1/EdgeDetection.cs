@@ -8,11 +8,29 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
+    /// <summary>
+    /// Class EdgeDetection computes detection of edges in bitmap. Edges are detected using gradient method. Gradient methods look 
+    /// for the maximum and minimum in the first derivative of the image. For each pixel is applied convolution filter.
+    /// After this step is applied edge thresholding. A value of threshold could be changed in GUI.
+    /// </summary>
     public partial class EdgeDetection
     {
+        /// <summary>
+        /// Kernel for x-axis.
+        /// </summary>
         private static int[,] gx;
+        /// <summary>
+        /// Kernel for y-axis.
+        /// </summary>
         private static int[,] gy;
 
+        /// <summary>
+        /// Method for edge detection.
+        /// </summary>
+        /// <param name="original">original image</param>
+        /// <param name="threshold">threshold value</param>
+        /// <param name="operatorIndex">kernel index</param>
+        /// <returns>image with detected edges</returns>
         public static Bitmap EdgeDetectionInImage(Bitmap original, byte threshold, int operatorIndex)
         {
             int width = original.Width;
@@ -52,11 +70,12 @@ namespace WindowsFormsApplication1
                                 newY += gy[m, n] * Current;
                             }
                         }
+
                         position = ((i * width + j) * OneColorBits);
                         if (newX * newX + newY * newY > threshold * threshold)
-                            dst[position] = dst[position + 1] = dst[position + 2] = 0;
-                        else
                             dst[position] = dst[position + 1] = dst[position + 2] = 255;
+                        else
+                            dst[position] = dst[position + 1] = dst[position + 2] = 0; 
                     }
                 }
 
@@ -67,6 +86,10 @@ namespace WindowsFormsApplication1
             return after;
         }
 
+        /// <summary>
+        /// Method for choosing convolution matrix according given parameter. Zero for Sobel's matrix, 1 - Prewitt, 2 - Kirsch.
+        /// </summary>
+        /// <param name="operatorIndex">index of convolution matrix</param>
         private static void chooseMatrix(int operatorIndex)
         {
             switch (operatorIndex)
