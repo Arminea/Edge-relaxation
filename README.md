@@ -18,15 +18,16 @@ Thus, the existence, non-existence, of edge is based on appearance of its neighb
 Edge relaxation is iterative method. Each edge receives a confidence value which is modified in loops. Main goal is convergence of confidences to 0 or 1.
 
 Algorithm:
-1. Compute initial confidence of each edge $C_0(e)$ as the normalozed gradient magnitude normalized by the maximum gradient magnitude in the image.
+
+1. Compute initial confidence of each edge C<sup>0</sup>(e) as the normalozed gradient magnitude normalized by the maximum gradient magnitude in the image.
 
 2. *k*=1
 
 3. Compure each edge type based on the confidence of edge neighbors.
 
-4. Modify the confidence of each edge $C_k(e)$ based on its edge type and its previous confidence $C_{k-1}(e)$.
+4. Modify the confidence of each edge C<sup>k</sup>(e) based on its edge type and its previous confidence C<sup>k-1</sup>(e).
 
-5. Test the $C_k(e)$'s to see if they have all converged to either 0 or 1. If so, stop, else increment *k* and go to 3.
+5. Test the C<sup>k</sup>(e)'s to see if they have all converged to either 0 or 1. If so, stop, else increment *k* and go to 3.
 
 This algorithm is taken from the book *Computer Vision* by Dana Ballard and Chris Brown (http://homepages.inf.ed.ac.uk/rbf/BOOKS/BANDB/bandb.htm).
 
